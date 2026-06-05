@@ -173,6 +173,144 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
 
+            <!-- 屏幕旋转 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="是否锁定旋转"
+                    android:textSize="18sp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/isRotationLocked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 屏幕旋转锁定 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/setForcedLandscape"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="强制横屏"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 熄屏时间 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/setScreenOffTimeout"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="设置熄屏时间"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 熄屏时间 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <EditText
+                    android:id="@+id/setScreenTimeout_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@android:color/white"
+                    android:hint="30s"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 熄屏时间 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="当前熄屏时间："
+                    android:textSize="18sp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/getScreenOffTimeout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
             <!-- 当前音量 -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -586,6 +724,388 @@
                 android:background="@android:color/darker_gray"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
+
+            <!-- 输入白名单包名 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <EditText
+                    android:id="@+id/packageName_whiteList"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@android:color/white"
+                    android:hint="your.package.name"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 添加白名单 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/addToWhiteList"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="加入白名单"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 移出白名单 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/removeFromWhiteList"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="移出白名单"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 查看白名单 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/getWhiteList"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="获取白名单"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 检查是否为白名单 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/isAllowedToStart"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="是否在白名单中"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 重启 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/reboot"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="reboot"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 关机 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/shutdownDevice"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="shutdown"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 电量 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/getBatteryLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:minWidth="80dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="获取电量"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:background="@android:drawable/btn_default"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/getBatteryLevel_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前电量"
+                    android:textSize="18sp"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 截屏 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/takeScreenshot"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:textColor="@android:color/black"
+                    android:text="Screenshot"/>
+
+            </LinearLayout>
+            <!-- 分隔线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 串口测试面板卡片 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="串口测试 (Serial Port API)"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- 配置项：路径、波特率 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText
+                        android:id="@+id/et_serial_path"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:text="/dev/ttyS3"
+                        android:hint="串口路径"
+                        android:textSize="14sp"/>
+
+                    <EditText
+                        android:id="@+id/et_serial_baud"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:text="115200"
+                        android:inputType="number"
+                        android:hint="波特率"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <!-- 开关控制按钮 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <Button
+                        android:id="@+id/btn_open_serial"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="打开串口"
+                        android:layout_marginEnd="4dp"/>
+
+                    <Button
+                        android:id="@+id/btn_close_serial"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="关闭串口"
+                        android:layout_marginStart="4dp"
+                        android:enabled="false"/>
+                </LinearLayout>
+
+                <!-- 写入测试 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText
+                        android:id="@+id/et_send_data"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.8"
+                        android:text="Hello QyApi"
+                        android:hint="向串口发送数据"
+                        android:textSize="14sp"/>
+
+                    <Button
+                        android:id="@+id/btn_send_str"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:text="Str"
+                        android:layout_marginEnd="2dp"
+                        android:textSize="12sp"/>
+
+                    <Button
+                        android:id="@+id/btn_send_hex"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:text="Hex"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <!-- 串口数据接收日志 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="bottom">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="数据接收区:"
+                        android:textSize="14sp"
+                        android:textColor="#555555"
+                        android:layout_marginBottom="2dp"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                    <Button
+                        android:id="@+id/btn_clear_log"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="清除"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:textColor="#E91E63"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <!-- 接收控制面板 -->
+                <ScrollView
+                    android:id="@+id/sv_log_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="#1E1E1E"
+                    android:padding="8dp">
+                    <TextView
+                        android:id="@+id/tv_receive_log"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#00FF00"
+                        android:textSize="11sp"
+                        android:fontFamily="monospace"
+                        android:text="Waiting for connection..."/>
+                </ScrollView>
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

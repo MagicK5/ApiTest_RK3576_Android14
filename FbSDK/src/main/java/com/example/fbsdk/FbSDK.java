@@ -8,6 +8,7 @@ import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.qyapi.QyApiManager;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,7 +19,10 @@ import android.qyapi.ScanResultInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import javax.xml.transform.Result;
+import android.qyapi.QyApiSerialCallback;
 
 public class FbSDK {
     private String TAG = "FbSdk";
@@ -469,7 +473,164 @@ public class FbSDK {
         }
     }
 
-    public void test(){
-        Log.e(TAG,"null");
+    /**
+     * WhiteList
+     */
+
+    public void addToWhiteList(String packageName){
+        if(manager != null){
+            manager.addToWhiteList(packageName);
+        }
     }
+
+    public void removeFromWhiteList(String packageName){
+        if(manager != null){
+            manager.removeFromWhiteList(packageName);
+        }
+    }
+
+    public List<String> getWhiteList(){
+        if(manager != null){
+            return manager.getWhiteList();
+        }
+        return null;
+    }
+
+    public boolean isAllowedToStart(String packageName){
+        if(manager != null){
+            return manager.isAllowedToStart(packageName);
+        }
+        return false;
+    }
+
+    /**
+     * Power
+     */
+    public boolean reboot(){
+        if(manager != null){
+            return manager.reboot();
+        }
+        return false;
+    }
+
+    public boolean shutdownDevice(){
+        if(manager != null){
+            return manager.shutdownDevice();
+        }
+        return false;
+    }
+
+    public int getBatteryLevel(){
+        if(manager != null){
+            return manager.getBatteryLevel();
+        }
+        return -1;
+    }
+
+    /**
+     * Screenshot
+     */
+    public boolean takeScreenshotAndSave(){
+        if(manager != null){
+            return manager.takeScreenshotAndSave();
+        }
+        return false;
+    }
+
+    /**
+     * Display
+     */
+    public void setForcedLandscape(boolean enable){
+        if(manager != null){
+            manager.setForcedLandscape(enable);
+        }
+    }
+
+    public boolean isRotationLocked(){
+        if(manager != null){
+            return manager.isRotationLocked();
+        }
+        return false;
+    }
+
+    public void setScreenOffTimeout(int timeoutMs){
+        if(manager != null){
+            manager.setScreenOffTimeout(timeoutMs);
+        }
+    }
+
+    public int getScreenOffTimeout(){
+        if(manager != null){
+            return manager.getScreenOffTimeout();
+        }
+        return 30000;
+    }
+
+    /**
+     * Serial
+     */
+    // 定义一个供 App 端使用的回调接口
+    public interface SerialCallback {
+        /**
+         * 收到串口数据时的回调
+         * @param data 字节数据
+         */
+        void onDataReceived(byte[] data);
+    }
+    // 用于缓存已注册的 AIDL Callback，方便后期管理（如果需要）
+    private final Map<SerialCallback, QyApiSerialCallback> mSdkCallbackMap = new ArrayMap<>();
+
+    /**
+     * 打开串口
+     */
+    public boolean openSerial(String path, int baudRate, int dataBits, int stopBits, char parity) {
+        if (manager != null) {
+            return manager.openSerial(path, baudRate, dataBits, stopBits, parity);
+        }
+        return false;
+    }
+    /**
+     * 关闭串口
+     */
+    public void closeSerial(String path) {
+        if (manager != null) {
+            manager.closeSerial(path);
+        }
+    }
+    /**
+     * 写入串口数据
+     */
+    public int writeSerial(String path, byte[] data) {
+        if (manager != null) {
+            return manager.writeSerial(path, data);
+        }
+        return -1;
+    }
+    /**
+     * 注册串口数据接收监听
+     * 注意：请根据 AOSP 中定义的 IQyApiSerialCallback.aidl 确切方法名修改 Stub 中的实现
+     */
+    public void registerSerialCallback(String path, final SerialCallback callback) {
+        if (manager != null && callback != null) {
+            // 将 SDK 对外的 Callback 转换为 QyApi 的公有接口
+            QyApiSerialCallback qyCallback = new QyApiSerialCallback() {
+                @Override
+                public void onDataReceived(byte[] data) {
+                    callback.onDataReceived(data);
+                }
+            };
+
+            mSdkCallbackMap.put(callback, qyCallback);
+            manager.registerSerialCallback(path, qyCallback);
+        }
+    }
+    public void unregisterSerialCallback(String path, SerialCallback callback) {
+        if (manager != null && callback != null) {
+            QyApiSerialCallback qyCallback = mSdkCallbackMap.remove(callback);
+            if (qyCallback != null) {
+                manager.unregisterSerialCallback(path, qyCallback);
+            }
+        }
+    }
+
 }
